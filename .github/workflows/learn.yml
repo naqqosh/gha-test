@@ -2,24 +2,39 @@ name: Learn
 
 on:
   push:
+    # faqat main va release/next'ga push bo'lganda ishlaydi
+    branches:
+      - main
+      - release/next
+
+    # faqat src papkasi ichidagi file'lar yoki js file'lar o'zgarganda ishlaydi
+    paths:
+      - "src/**"
+      - "*.js"
 
 jobs:
   setup_node:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: repo'ni yuklab olish
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Node.js o'rnatish
+        uses: actions/setup-node@v4
 
         with:
           node-version: "22"
 
-      - run: ls -la
-
-      - working-directory: ./test
+      - name: repo file'lari
         run: ls -la
 
-      - run: node -v
+      - name: test papkasi ichidagi file'larni ko'rsatish
+        working-directory: ./test
+        run: ls -la
 
-      - run: npm -v
+      - name: Node.js versiyasini ko'rsatish
+        run: node -v
+
+      - name: npm versiyasini ko'rsatish
+        run: npm -v
