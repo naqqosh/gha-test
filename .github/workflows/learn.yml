@@ -1,14 +1,26 @@
 name: Learn
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow-dispatch:
+    inputs:
+      environment:
+        description: "Qaysi muhit?"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+      
+      tag:
+        description: "Git tag"
+        required: false
+
 
 jobs:
-  do_pr_job:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: print message
-        run: echo "I think you opened a pull request to branch main, am I true?"
+      - run: echo "Deploy to ${{ github.event.inputs.environment }}"
+        run: echo "Tag: ${{ github.event.inputs.tag }}"
