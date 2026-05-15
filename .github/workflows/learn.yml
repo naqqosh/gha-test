@@ -1,39 +1,14 @@
 name: Learn
 
 on:
-  push:
-    # faqat main va release/next'ga push bo'lganda ishlaydi
+  pull_request:
     branches:
       - main
-      - release/next
-
-    # faqat src papkasi ichidagi file'lar yoki js file'lar o'zgarganda ishlaydi
-    paths:
-      - ".github/workflows/learn.yml"
 
 jobs:
-  setup_node:
+  do_pr_job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: repo'ni yuklab olish
-        uses: actions/checkout@v4
-
-      - name: Node.js o'rnatish
-        uses: actions/setup-node@v4
-
-        with:
-          node-version: "22"
-
-      - name: repo file'lari
-        run: ls -la
-
-      - name: test papkasi ichidagi file'larni ko'rsatish
-        working-directory: ./test
-        run: ls -la
-
-      - name: Node.js versiyasini ko'rsatish
-        run: node -v
-
-      - name: npm versiyasini ko'rsatish
-        run: npm -v
+      - name: print message
+        run: echo "I think you opened a pull request to branch main, am I true?"
