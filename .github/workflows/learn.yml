@@ -9,8 +9,7 @@ on:
 
     # faqat src papkasi ichidagi file'lar yoki js file'lar o'zgarganda ishlaydi
     paths:
-      - "src/**"
-      - "*.js"
+      - ".github/workflows/learn.yml"
 
 jobs:
   setup_node:
