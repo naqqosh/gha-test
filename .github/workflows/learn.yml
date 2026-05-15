@@ -9,11 +9,10 @@ on:
         options:
           - staging
           - production
-      
+
       tag:
         description: "Git tag"
         required: false
-
 
 jobs:
   deploy:
@@ -21,4 +20,4 @@ jobs:
 
     steps:
       - run: echo "Deploy to ${{ github.event.inputs.environment }}"
-      - run: echo "Tag: ${{ github.event.inputs.tag }}"
+      # - run: echo "Tag: ${{ github.event.inputs.tag }}"
