@@ -1,0 +1,11 @@
+name: Learn
+
+on:
+  push:
+
+jobs:
+  show:
+    steps:
+      - run: ls -la
+      - working-directory ./test
+        run: ls -la
