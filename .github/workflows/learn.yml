@@ -5,7 +5,9 @@ on:
 
 jobs:
   show:
+    runs-on: ubuntu-latest
+
     steps:
       - run: ls -la
-      - working-directory ./test
+      - working-directory: ./test
         run: ls -la
