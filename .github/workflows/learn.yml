@@ -1,25 +1,12 @@
-name: Deploy manually
+name: Every day at 5 o'clock
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: "Qaysi muhit?"
-        required: true
-        default: "staging"
-        type: choice
-        options:
-          - staging
-          - production
-
-      tag:
-        description: "Git tag"
-        required: false
+  schedule:
+    - cron: "0 5 * * *"
 
 jobs:
-  deploy:
+  everyday:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Deploy to ${{ github.event.inputs.environment }}"
-      # - run: echo "Tag: ${{ github.event.inputs.tag }}"
+      - run: echo "Good morning! It's 5:00."
