@@ -2,7 +2,7 @@ name: Every day at 5 o'clock
 
 on:
   schedule:
-    - cron: "15 18 * * *"
+    - cron: "25 18 * * *"
 
 jobs:
   everyday:
