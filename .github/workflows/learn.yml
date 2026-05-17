@@ -1,8 +1,9 @@
 name: Every day at 5 o'clock
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "25 18 * * *"
+    - cron: "33 18 * * *"
 
 jobs:
   everyday:
