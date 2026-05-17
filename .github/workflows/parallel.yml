@@ -1,0 +1,18 @@
+name: Parallel jobs
+
+on:
+  push:
+    branches: [workflow-planner]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "I'm job1"
+
+  job2:
+    runs-on: windows-latest
+
+    steps:
+      - run: echo "I'm job2 and job1 and I are working parallel"
