@@ -17,5 +17,5 @@ jobs:
 
     steps:
       - name: shartli ishla
-        if: github.ref_name == "main"
+        if: github.ref_name == 'main'
         run: echo "demak siz main'ga push qildiz, bu job1 dan keyin ishladi"
