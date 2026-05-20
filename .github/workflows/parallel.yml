@@ -1,0 +1,21 @@
+name: Parallel jobs
+
+on:
+  push:
+    branches: [workflow-planner]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: error_ber
+
+  job2:
+    needs: job1
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - if: always()
+        run: echo "ishladi-ey"
