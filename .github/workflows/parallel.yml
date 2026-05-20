@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "I'm job1"
+      - run: error_ber
 
   job2:
     needs: job1
@@ -19,3 +19,9 @@ jobs:
       - name: shartli ishla
         if: github.ref_name == 'workflow-planner'
         run: echo "demak siz workflow-planner'ga push qildiz, bu job1 dan keyin ishladi"
+
+  job3:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "bu ishlar ekan"
