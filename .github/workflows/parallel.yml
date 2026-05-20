@@ -9,13 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: error_ber
-
-  job2:
-    needs: job1
-    if: always()
-    runs-on: ubuntu-latest
-
-    steps:
-      - if: always()
-        run: echo "ishladi-ey"
+      - run: |
+          echo ${{github.ref}}
+          echo ${{github.ref_name}}
+          echo ${{github.ref_type}}
+          echo ${{github.event_name}}
