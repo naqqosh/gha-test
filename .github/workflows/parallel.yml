@@ -10,7 +10,9 @@ jobs:
 
     steps:
       - run: |
-          echo ${{ secrets.MY_SECRET }} > token.txt
-          cat token.txt
-
-      - run: cat token.txt
+          echo ${{ github.actor }}
+          echo ${{ github.repository }}
+          echo ${{ github.repository_owner }}
+          echo ${{ github.run_id }}
+          echo ${{ github.workspace }}
+          echo ${{ github.sha }}
