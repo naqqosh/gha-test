@@ -7,17 +7,6 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    env:
-      JOB_VAR: "job'da qo'shildi bu"
-      TOP_VAR: "this var is from job"
 
     steps:
-      - run: echo $JOB_VAR
-
-      - run: echo $TOP_VAR
-        env:
-          TOP_VAR: "override"
-
-      - run: echo $MY_VAR
-        env:
-          MY_VAR: "my secret var'ni qanday topib olding:"
+      - run: echo ${{ secrets.MY_SECRET }}
