@@ -7,15 +7,22 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    outputs:
-      job_output: ${{ steps.get_date.outputs.today }}
+
     steps:
-      - id: get_date
-        run: echo "today=$(date +%Y-%m-%d)" >> $GITHUB_OUTPUT
+      - run: echo "importatn data" > report.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-report
+          path: report.txt
 
   job2:
     needs: job1
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ needs.job1.outputs.job_output }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: my-report
+
+      - run: cat report.txt
