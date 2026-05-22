@@ -7,9 +7,17 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-
+    outputs:
+      job_output: "hi from job1"
     steps:
       - id: get_date
         run: echo "today=$(date +%Y-%m-%d)" >> $GITHUB_OUTPUT
 
       - run: echo "Bugun ${{ steps.get_date.outputs.today }}"
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo ${{ needs.job1.outputs.job_output }}
