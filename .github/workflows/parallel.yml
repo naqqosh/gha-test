@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: |
-          echo ${{ github.actor }}
-          echo ${{ github.repository }}
-          echo ${{ github.repository_owner }}
-          echo ${{ github.run_id }}
-          echo ${{ github.workspace }}
-          echo ${{ github.sha }}
+      - run: ls -la
+
+      - run: touch ${{ github.workspace }}/test.txt
+
+      - run: ls -la
+
+      - run: la -la ${{ github.workspace }}
