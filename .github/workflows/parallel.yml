@@ -17,4 +17,4 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: console.log("Hello from node-${{ matrix.node-version }}");
+      - run: node -e "console.log(`Hello from node-${{ matrix.node-version }}`);"
