@@ -8,21 +8,13 @@ jobs:
   job1:
     runs-on: ubuntu-latest
 
-    steps:
-      - run: echo "importatn data" > report.txt
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: my-report
-          path: report.txt
-
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22, 23]
 
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/setup-node@v4
         with:
-          name: my-report
+          node-version: ${{ matrix.node-version }}
 
-      - run: cat report.txt
+      - run: console.log("Hello from node-${{ matrix.node-version }}");
