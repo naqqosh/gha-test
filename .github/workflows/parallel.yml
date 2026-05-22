@@ -9,10 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: ls -la
+      - id: get_date
+        run: echo "today=$(date +%Y-%m-%d)" >> $GITHUB_OUTPUT
 
-      - run: touch ${{ github.workspace }}/test.txt
-
-      - run: ls -la
-
-      - run: la -la ${{ github.workspace }}
+      - run: echo "Bugun ${{ steps.get_date.outputs.today }}"
