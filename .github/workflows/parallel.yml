@@ -15,23 +15,23 @@ jobs:
           key: demo-cache-v1
 
       - name: Cache status
-        run: echo "cache-hit: ${{ steps.cache-demo.outputs.cache-hit }}"
+        run: 'echo "cache-hit: ${{ steps.cache-demo.outputs.cache-hit }}"'
 
       - name: Show folder before
         run: |
-            ls -la
-            ls -la my-cache-dir || echo "my-cache-dir not found"
+          ls -la
+          ls -la my-cache-dir || echo "my-cache-dir not found"
 
       - name: Create files
         if: steps.cache-demo.outputs.cache-hit != 'true'
         run: |
-            mkdir -p my-cache-dir
-            echo "hello cache" > my-cache-dir/test.txt
-            date > my-cache-dir/date.txt
+          mkdir -p my-cache-dir
+          echo "hello cache" > my-cache-dir/test.txt
+          date > my-cache-dir/date.txt
 
       - name: Show folder after
         run: |
-            echo "=== FINAL ==="
-            ls -la my-cache-dir
-            cat my-cache-dir/test.txt
-            cat my-cache-dir/date.txt
+          echo "=== FINAL ==="
+          ls -la my-cache-dir
+          cat my-cache-dir/test.txt
+          cat my-cache-dir/date.txt
