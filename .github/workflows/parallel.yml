@@ -15,7 +15,8 @@ jobs:
           key: demo-cache-v1
 
       - name: Cache status
-        run: 'echo "cache-hit: ${{ steps.cache-demo.outputs.cache-hit }}"'
+        run: |
+          echo "cache-hit: ${{ steps.cache-demo.outputs.cache-hit }}"
 
       - name: Show folder before
         run: |
