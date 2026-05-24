@@ -13,6 +13,7 @@ jobs:
         with:
           path: my-cache-dir
           key: demo-cache-v2
+          restore-keys: demo-cache-
 
       - name: Cache status
         run: |
