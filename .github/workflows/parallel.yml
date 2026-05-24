@@ -12,7 +12,7 @@ jobs:
         id: cache-demo
         with:
           path: my-cache-dir
-          key: demo-cache-v1
+          key: demo-cache-v2
 
       - name: Cache status
         run: |
@@ -23,12 +23,12 @@ jobs:
           ls -la
           ls -la my-cache-dir || echo "my-cache-dir not found"
 
-      - name: Create files
-        if: steps.cache-demo.outputs.cache-hit != 'true'
-        run: |
-          mkdir -p my-cache-dir
-          echo "hello cache" > my-cache-dir/test.txt
-          date > my-cache-dir/date.txt
+      # - name: Create files
+      #   if: steps.cache-demo.outputs.cache-hit != 'true'
+      #   run: |
+      #     mkdir -p my-cache-dir
+      #     echo "hello cache" > my-cache-dir/test.txt
+      #     date > my-cache-dir/date.txt
 
       - name: Show folder after
         run: |
