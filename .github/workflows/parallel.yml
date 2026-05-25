@@ -7,12 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: |
-          ls -la
-          ls -la .github
-          ls -la .github/actions/salom
+      - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/salom
+      - name: O'z actionimni ishlatish
+        uses: ./.github/actions/salom
         with:
           ism: "Bobur"
 
