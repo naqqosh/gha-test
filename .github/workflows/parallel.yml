@@ -13,6 +13,10 @@ jobs:
           POSTGRES_PASSWORD: postgres
 
     steps:
-      - run: apt-get update && apt-get install -y postgresql-client
+      - run: |
+          sudo apt-get updates
+          sudo apt-get install -y postgresql-client
 
       - run: psql -h postgres -U postgres -c "SELECT 1"
+        env:
+          PGPASSWORD: postgres
