@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - run: |
-          sudo apt-get updates
+          sudo apt-get update
           sudo apt-get install -y postgresql-client
 
       - run: psql -h postgres -U postgres -c "SELECT 1"
