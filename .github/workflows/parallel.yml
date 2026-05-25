@@ -11,7 +11,7 @@ jobs:
 
       - name: Action dependencies'larini o'rnatish
         run: |
-          cd .github/acttions/salom
+          cd .github/actions/salom
           npm install
 
       - name: O'z actionimni ishlatish
