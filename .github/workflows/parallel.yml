@@ -1,26 +1,18 @@
-name: Cache Demo
+name: "Sevices: Postgres"
 
 on: [push]
 
 jobs:
-  in-runner:
+  test:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - run: node -v
-
-  in-container:
-    runs-on: ubuntu-latest
-
-    container: node:22-alpine
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
 
     steps:
-      - run: node -v
+      - run: apt-get update && apt-get install -y postgresql-client
+
+      - run: psql -h postgres -U postgres -c "SELECT 1"
