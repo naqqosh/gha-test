@@ -3,37 +3,25 @@ name: Cache Demo
 on: [push]
 
 jobs:
-  demo:
-    runs-on: ubuntu-latest
+  in-runner:
+    runs-on: ubuntu-lateset
 
     steps:
-      - name: Restore cache
-        uses: actions/cache@v4
-        id: cache-demo
+      - uses: pnpm/action-setup@v4
         with:
-          path: my-cache-dir
-          key: demo-cache-v3
-          restore-keys: demo-cache-
+          version: 9
 
-      - name: Cache status
-        run: |
-          echo "cache-hit: ${{ steps.cache-demo.outputs.cache-hit }}"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
 
-      - name: Show folder before
-        run: |
-          ls -la
-          ls -la my-cache-dir || echo "my-cache-dir not found"
+      - run: node -v
 
-      - name: Create files
-        if: steps.cache-demo.outputs.cache-hit != 'true'
-        run: |
-          mkdir -p my-cache-dir
-          echo "hello cache" > my-cache-dir/test.txt
-          date > my-cache-dir/date.txt
+  in-container:
+    runs-on: ubuntu-latest
 
-      - name: Show folder after
-        run: |
-          echo "=== FINAL ==="
-          ls -la my-cache-dir
-          cat my-cache-dir/test.txt
-          cat my-cache-dir/date.txt
+    container: node:22-alpine
+
+    steps:
+      - run: node -v
