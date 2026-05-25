@@ -9,6 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Action dependencies'larini o'rnatish
+        run: |
+          cd .github/acttions/salom
+          npm install
+
       - name: O'z actionimni ishlatish
         uses: ./.github/actions/salom
         with:
