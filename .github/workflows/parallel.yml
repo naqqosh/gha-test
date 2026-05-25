@@ -6,24 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:16
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_PASSWORD: postgres
-          options: >-
-            --health-cmd="pg_isready"
-            --health-interval=10s
-            --health-timeout=5s
-            --health-retries=5
-
     steps:
-      - run: |
-          sudo apt-get update
-          sudo apt-get install -y postgresql-client
+      - uses: ./.github/actions/salom
+        with:
+          ism: "Bobur"
 
-      - run: psql -h localhost -U postgres -c "SELECT 1"
-        env:
-          PGPASSWORD: postgres
+      - run: echo "${{ steps.salom.outputs.natija }}"
