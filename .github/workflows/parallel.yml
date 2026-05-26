@@ -2,6 +2,7 @@ name: "Container vs Ubuntu"
 
 on:
   push:
+    branches: [main]
 
 jobs:
   container_test:
