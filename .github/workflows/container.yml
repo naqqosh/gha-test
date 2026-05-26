@@ -1,19 +1,15 @@
-name: container vs ubuntu
+name: runner.os
 
 on:
   push:
   workflow_dispatch:
 
 jobs:
-  container_test:
-    runs-on: ubuntu-latest
-    container: python:3.12-alpine
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
-      - run: apt-get update
-
-  ubuntu_test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - run: apt-get update
+      - run: 'echo "OS: ${{ runner.os }}"'
