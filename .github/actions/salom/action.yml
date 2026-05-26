@@ -1,0 +1,16 @@
+name: "Salom dunyo"
+description: "Isimni qabul qilib, salom yozadi"
+
+inputs:
+  ism:
+    description: "Kimga salom aytish"
+    required: true
+    default: "Dunyo"
+
+outputs:
+  natija:
+    description: "Chiqarilgan salom"
+
+runs:
+  using: "node20"
+  main: "index.js"
