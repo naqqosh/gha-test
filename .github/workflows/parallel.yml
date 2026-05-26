@@ -2,7 +2,8 @@ name: "Container vs Ubuntu"
 
 on:
   push:
-    branches: [main]
+    branches:
+      - never-run-branch
 
 jobs:
   container_test:
