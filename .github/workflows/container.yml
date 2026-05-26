@@ -1,19 +1,12 @@
-name: Container vs Ubuntu
+name: sanity
 
 on:
   push:
   workflow_dispatch:
 
 jobs:
-  container_test:
+  test:
     runs-on: ubuntu-latest
-    # container: python:3.12-alpine
 
     steps:
-      - run: apt-get update
-
-  # ubuntu_test:
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - run: apt-get update
+      - run: echo hello
