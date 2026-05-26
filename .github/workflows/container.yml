@@ -1,0 +1,18 @@
+name: Container vs Ubuntu
+
+on:
+  push:
+
+jobs:
+  container_test:
+    runs-on: ubuntu-latest
+    container: python:3.12-alpine
+
+    steps:
+      - run: apt-get update
+
+  ubuntu_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: apt-get update
