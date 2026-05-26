@@ -1,22 +1,17 @@
-name: "Sevices: Postgres"
+name: "Container vs Ubuntu"
 
-on: [push]
+on: push
 
 jobs:
-  test:
+  container_test:
+    runs-on: ubuntu-latest
+    container: python:3.12-alpine
+
+    steps:
+      - run: apt-get update
+
+  ubuntu_test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Action dependencies'larini o'rnatish
-        run: |
-          cd .github/actions/salom
-          npm install
-
-      - name: O'z actionimni ishlatish
-        uses: ./.github/actions/salom
-        with:
-          ism: "Bobur"
-
-      - run: echo "${{ steps.salom.outputs.natija }}"
+      - run: apt-get update
