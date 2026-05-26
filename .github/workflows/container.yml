@@ -2,6 +2,7 @@ name: Container vs Ubuntu
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   container_test:
