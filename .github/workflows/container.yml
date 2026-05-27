@@ -11,6 +11,6 @@ jobs:
     steps:
       - id: my-step-output
         run: |
-          echo "hi from ${{ runner.os }}" >> $GITHUB_OUTPUT
+          echo "text=hi from ${{ runner.os }}" >> $GITHUB_OUTPUT
 
-      - run: echo "${{ steps.my-step-output.outputs }}"
+      - run: echo "${{ steps.my-step-output.outputs.text }}"
