@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 11
+      - id: my-step-output
+        run: |
+          echo "hi from ${{ runner.os }}" >> $GITHUB_OUTPUT
 
-      - run: pnpm -v
+      - run: echo "${{ steps.my-step-output.outputs }}"
