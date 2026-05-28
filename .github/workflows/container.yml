@@ -6,7 +6,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: production
+    environment: staging
 
     steps:
       - run: echo "hello environment"
