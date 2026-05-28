@@ -2,15 +2,11 @@ name: pnpm
 
 on:
   push:
-  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
-      - id: my-step-output
-        run: |
-          echo "text=hi from ${{ runner.os }}" >> $GITHUB_OUTPUT
-
-      - run: echo "${{ steps.my-step-output.outputs.text }}"
+      - run: echo "hello environment"
