@@ -10,6 +10,8 @@ jobs:
     steps:
       - run: echo "hello environment"
 
+      - uses: actions/checkout@v4
+
       - uses: ./.github/actions/setup-node
         with:
           node-version: "22"
