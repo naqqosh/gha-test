@@ -1,0 +1,25 @@
+name: Setup NodeJS
+description: Reusable setup
+
+inputs:
+  node-version:
+    description: NodeJS version
+    required: true
+    default: "22"
+
+runs:
+  using: "composite"
+
+  steps:
+    - uses: actions/checkout@v4
+
+    - uses: pnpm/action-setup@v1
+      with:
+        version: 11
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - run: pnpm install
+      shell: bash

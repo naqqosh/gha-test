@@ -6,7 +6,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: staging
 
     steps:
       - run: echo "hello environment"
+
+      - uses: ./.github/actions/setup-node
+        with:
+          node-version: "22"
